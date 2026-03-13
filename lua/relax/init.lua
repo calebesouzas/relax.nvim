@@ -1,0 +1,2 @@
+-- lua/relax/init.lue
+-- The entry point of our plugin
