@@ -9,21 +9,26 @@ local theme = lush(function(injected_functions)
 
   local colors = {
     background = hsl(281, 27, 14),
-    red = hsl(343, 100, 50),
-    orange = hsl(24, 100, 50),
-    purple = hsl(270, 100, 50),
-    pink = hsl(290, 100, 50),
+    red = hsl(351, 90, 58),
+    orange = hsl(40, 100, 50),
+    purple = hsl(270, 100, 70),
+    pink = hsl(295, 100, 75),
     cream = hsl(238, 93, 83),
     ice = hsl(199, 100, 91),
-    white = hsl(0, 0, 100),
     green = hsl(150, 80, 50),
+    lime = hsl(150, 100, 80),
     blue = hsl(220, 100, 70),
+    yellow = hsl(53, 100, 60),
+    comment = hsl(199, 100, 41),
+    white = hsl(0, 0, 100),
+    gray = hsl(0, 0, 80),
   }
 
   return {
     -- Neovim default colors --
     Normal { bg = colors.background, fg = colors.white },
-    Comment { fg = colors.ice.da(55).da(15) },
+    Delimiter { fg = colors.gray },
+    Comment { fg = colors.comment },
 
     Identifier { fg = colors.ice.da(15) },
     Function { fg = colors.cream },
@@ -31,9 +36,9 @@ local theme = lush(function(injected_functions)
     Statement { fg = colors.purple.li(21) },
     String { fg = colors.green },
     Type { fg = colors.red },
-    Constant { fg = colors.orange.li(35) },
+    Constant { fg = colors.orange },
     Error { fg = colors.red.da(20) },
-    Special { fg = colors.cream.ro(-35) },
+    Special { fg = colors.ice },
 
     -- CursorLine { fg = colors.background },
     CursorLineNr { fg = colors.background.li(50) },
@@ -46,10 +51,21 @@ local theme = lush(function(injected_functions)
     -- TreeSitter colors --
     sym "@variable" { fg = Normal.fg.da(8) },
     sym "@variable.member" { Identifier },
+    sym "@variable.parameter" { fg = colors.ice },
+    sym "@constant.builtin" { fg = colors.yellow },
+    sym "@number" { fg = Constant.fg.li(10).ro(5) },
     sym "@type" { fg = colors.red },
-    sym "@type.builtin" { fg = sym("@type").fg.li(30).ro(10).sa(10) },
+    sym "@type.builtin" { fg = sym("@type").fg.li(30) },
     sym "@keyword.import" { fg = colors.blue.li(45) },
-    sym "@keyword.directive" { fg = colors.blue.li(45) }
+    sym "@keyword.directive" { fg = colors.blue.li(45) },
+    sym "@keyword.modifier" { fg = colors.pink },
+    sym "@keyword.repeat" { Statement },
+    sym "@keyword.conditional" { Statement },
+    sym "@character" { String },
+    sym "@string" { String },
+    sym "@string.escape" { fg = colors.lime },
+    sym "@boolean" { fg = colors.yellow },
+    sym "@operator" { fg = colors.gray.da(10) },
   }
 end)
 
