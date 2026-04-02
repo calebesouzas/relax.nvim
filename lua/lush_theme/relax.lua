@@ -45,7 +45,7 @@ local theme = lush(function(injected_functions)
 
     -- C specific colors --
     cTypedef { Keyword },
-    PreProc { fg = colors.green },
+    PreProc { fg = colors.blue.li(45) },
     cBlock { Keyword },
 
     -- TreeSitter colors --
@@ -56,8 +56,8 @@ local theme = lush(function(injected_functions)
     sym "@number" { fg = Constant.fg.li(10).ro(5) },
     sym "@type" { fg = colors.red },
     sym "@type.builtin" { fg = sym("@type").fg.li(30) },
-    sym "@keyword.import" { fg = colors.blue.li(45) },
-    sym "@keyword.directive" { fg = colors.blue.li(45) },
+    sym "@keyword.import" { PreProc },
+    sym "@keyword.directive" { PreProc },
     sym "@keyword.modifier" { fg = colors.pink },
     sym "@keyword.repeat" { Statement },
     sym "@keyword.conditional" { Statement },
